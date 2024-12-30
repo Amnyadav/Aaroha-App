@@ -27,7 +27,7 @@ class ChaptersPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 centerTitle: true,
                 title: Text(
-                  "Team",
+                  "Chapters",
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 leading: Builder(
@@ -102,7 +102,7 @@ class ChapterCard extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Card(
-      color:Theme.of(context).scaffoldBackgroundColor,
+      color:Theme.of(context).cardColor,
       margin: EdgeInsets.symmetric(
         vertical: screenHeight * 0.01, // Dynamic vertical spacing
       ),
@@ -134,7 +134,7 @@ class ChapterCard extends StatelessWidget {
                   title,
                   style: TextStyle(
                     fontSize: screenWidth * 0.05, // Dynamic font size
-                    color: lightMode.colorScheme.secondary,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -143,7 +143,7 @@ class ChapterCard extends StatelessWidget {
                   description,
                   style: TextStyle(
                     fontSize: screenWidth * 0.04, // Dynamic font size
-                    color: lightMode.colorScheme.secondary,
+                    color:Colors.white,
                   ),
                 ),
               ],

@@ -129,8 +129,7 @@ class TeamMemberCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // color: lightMode.scaffoldBackgroundColor,
-      color:Theme.of(context).scaffoldBackgroundColor,
+      color:Theme.of(context).cardColor,
       elevation: 4.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
@@ -156,7 +155,7 @@ class TeamMemberCard extends StatelessWidget {
             style: TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.secondary,
+              color:Colors.white,
             ),
           ),
           const SizedBox(height: 5.0),
@@ -164,7 +163,7 @@ class TeamMemberCard extends StatelessWidget {
             designation,
             style: TextStyle(
               fontSize: 16.0,
-              color: Theme.of(context).colorScheme.secondary,
+              color: Colors.white,
             ),
           ),
         ],
