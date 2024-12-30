@@ -76,7 +76,7 @@ class AppDrawer extends StatelessWidget {
                   color: lightMode.colorScheme.secondary),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('/chapters');
+              Navigator.of(context).pushNamed('/pages/chapters');
             },
           ),
 
@@ -95,7 +95,7 @@ class AppDrawer extends StatelessWidget {
                   color: lightMode.colorScheme.secondary),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('/team');
+              Navigator.of(context).pushNamed('/pages/team');
             },
           ),
 
