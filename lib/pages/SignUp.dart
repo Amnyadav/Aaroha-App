@@ -1,5 +1,4 @@
 import 'package:aaroha/pages/LoginPage.dart';
-import 'package:aaroha/pages/emailVarification.dart';
 import 'package:aaroha/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,89 +18,37 @@ class _SignUpState extends State<SignUp> {
 
   final _formkey = GlobalKey<FormState>();
 
-  // registration() async {
-  //   if (namecontroller.text != "" && mailcontroller.text != "") {
-  //     try {
-  //       UserCredential userCredential = await FirebaseAuth.instance
-  //           .createUserWithEmailAndPassword(email: email, password: password);
-  //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //           content: Text(
-  //             "Registered Successfully",
-  //             style: TextStyle(fontSize: 20.0),
-  //           )));
-  //       Navigator.push(
-  //           context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'title')));
-  //     } on FirebaseAuthException catch (e) {
-  //       if (e.code == 'weak-password') {
-  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //             backgroundColor: Colors.orangeAccent,
-  //             content: Text(
-  //               "Password Provided is too Weak",
-  //               style: TextStyle(fontSize: 18.0),
-  //             )));
-  //       } else if (e.code == "email-already-in-use") {
-  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //             backgroundColor: Colors.orangeAccent,
-  //             content: Text(
-  //               "Account Already exists",
-  //               style: TextStyle(fontSize: 18.0),
-  //             )));
-  //       }
-  //     }
-  //   }
-  // }
   registration() async {
     if (namecontroller.text != "" && mailcontroller.text != "") {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
-
-        // Send email verification
-        User? user = FirebaseAuth.instance.currentUser;
-        if (user != null && !user.emailVerified) {
-          await user.sendEmailVerification();
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
-              "Registration successful! Please verify your email to continue.",
-              style: TextStyle(fontSize: 18.0),
-            ),
-          ));
-
-          // Navigate to EmailVerification page
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const EmailVerification()),
-          );
-        }
+              "Registered Successfully",
+              style: TextStyle(fontSize: 20.0),
+            )));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'title')));
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
-            content: Text(
-              "Password provided is too weak.",
-              style: TextStyle(fontSize: 18.0),
-            ),
-          ));
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Password Provided is too Weak",
+                style: TextStyle(fontSize: 18.0),
+              )));
         } else if (e.code == "email-already-in-use") {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
-            content: Text(
-              "Account already exists.",
-              style: TextStyle(fontSize: 18.0),
-            ),
-          ));
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Account Already exists",
+                style: TextStyle(fontSize: 18.0),
+              )));
         }
       }
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          "Please fill in all the fields.",
-          style: TextStyle(fontSize: 18.0),
-        ),
-      ));
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +110,6 @@ class _SignUpState extends State<SignUp> {
                           if (value == null || value.isEmpty) {
                             return 'Please Enter Email';
                           }
-                          // Navigator.push(context, MaterialPageRoute(builder: (ctx)=>const EmailVerificationScreen()));
                           return null;
                         },
                         controller: mailcontroller,

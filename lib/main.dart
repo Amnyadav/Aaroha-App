@@ -1,30 +1,26 @@
-
 import 'dart:io';
 
 import 'package:aaroha/firebase_options.dart';
 import 'package:aaroha/pages/home.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'pages/animation.dart';
+import 'pages/animation.dart'; 
 import 'package:aaroha/theme/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
 
+  Platform.isAndroid?
   await Firebase.initializeApp(
-    options: Platform.isAndroid
-        ? FirebaseOptions(
-      apiKey: dotenv.env['API_KEY']!,
-      appId: dotenv.env['APP_ID']!,
-      messagingSenderId: dotenv.env['MESSAGING_SENDER_ID']!,
-      projectId: dotenv.env['PROJECT_ID']!,
-    )
-        : DefaultFirebaseOptions.currentPlatform,
+      options: const FirebaseOptions(
+        apiKey: "AIzaSyCeiWgJpobn6Gmk1tRzir-MageHsKlO6oc",
+        appId: "1:55283264807:android:ddf7cf394f77bdae5f0d02",
+        messagingSenderId: "55283264807",
+        projectId: "aaroha-application",)
+  )
+      :await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseAuth auth = FirebaseAuth.instance;
   runApp(const MyApp());
 }
 
@@ -38,9 +34,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/": (context) => AnimationScreen(),
-        "/pages/home": (context) => MyHomePage(title: "titel"),
+        "/":(context) => AnimationScreen(),
+        "/pages/home":(context) => MyHomePage(title: "titel",),
       },
+      // home: const AnimationScreen(),
     );
   }
 }
