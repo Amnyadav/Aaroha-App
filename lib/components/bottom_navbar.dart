@@ -28,7 +28,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
       body:pages[myIndex],
     
       bottomNavigationBar:SizedBox(
-      height:75.0,
+      height:70.0,
       child:ClipRRect(
       
       borderRadius: const BorderRadius.only(
@@ -48,10 +48,10 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
           });
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined, size:35), label: 'Home',),
-          BottomNavigationBarItem(icon: Icon(Icons.folder_copy_outlined,size:35), label: 'Projects'),
-          BottomNavigationBarItem(icon: Icon(Icons.event_available_outlined,size:35), label: 'Events'),
-          BottomNavigationBarItem(icon: Icon(Icons.volunteer_activism_outlined,size:35), label: 'Donate'),
+          BottomNavigationBarItem(icon: Icon(Icons.home_outlined, size:28), label: 'Home',),
+          BottomNavigationBarItem(icon: Icon(Icons.folder_copy_outlined,size:28), label: 'Projects'),
+          BottomNavigationBarItem(icon: Icon(Icons.event_available_outlined,size:28), label: 'Events'),
+          BottomNavigationBarItem(icon: Icon(Icons.volunteer_activism_outlined,size:28), label: 'Donate'),
         ],
       ),
     ),)

@@ -10,7 +10,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      bottomNavigationBar: const CustomBottomBar(),
+        bottomNavigationBar: const CustomBottomBar(),
       body: const Column(
         children: [
           Expanded(
@@ -38,20 +38,30 @@ class HomePage extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
-                  height: screenHeight * 0.3,
-                  width: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(30),
-                    ),
-                    child: Image.asset(
-                      'lib/images/sampleImage.JPG',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+               Container(
+  height: screenHeight * 0.3,
+  width: double.infinity,
+  child: Padding(
+    padding: const EdgeInsets.only(bottom: 1), // Add padding below the image
+    child: ClipRRect(
+      borderRadius: const BorderRadius.only(
+        bottomLeft: Radius.circular(40),
+        bottomRight: Radius.circular(40),
+      ),
+      child: Transform.translate(
+        offset: const Offset(0, -5), // Move the image 10 pixels up
+        child: Image.asset(
+          'lib/images/home.jpg',
+          fit: BoxFit.cover,
+          color: Colors.black.withOpacity(.3),
+          colorBlendMode: BlendMode.darken,
+        ),
+      ),
+    ),
+  ),
+),
+
+
                 //App Bar
                 CustomAppBar(
                   title: "AAROHA",
@@ -62,6 +72,7 @@ class HomePage extends StatelessWidget {
                   bottom: 25,
                   left: 0,
                   right: 0,
+                  top: 215,
                   child: Text(
                     'Together We can create A World of Change',
                     textAlign: TextAlign.center,
@@ -115,7 +126,7 @@ class HomePage extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                   Text(
+                  Text(
                     'As students our heart beats for only one accomplishment. We want to embellish the lives of every single child who is deprived of its basic needs i.e., right to education and nutritious food. Overall development of the poor children is what makes this organisation stand with strength.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -157,7 +168,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-             Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 12, vertical: 20),
               child: Column(
                 children: [
@@ -171,8 +182,9 @@ class HomePage extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                 Icon(Icons.restaurant,
-                                    color: Theme.of(context).colorScheme.secondary,
+                                Icon(Icons.restaurant,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                     size: 22),
                                 const SizedBox(width: 6),
                                 Text(
@@ -180,7 +192,8 @@ class HomePage extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color:Theme.of(context).colorScheme.secondary,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 ),
                               ],
@@ -205,7 +218,8 @@ class HomePage extends StatelessWidget {
                             Row(
                               children: [
                                 Icon(Icons.health_and_safety,
-                                    color: Theme.of(context).colorScheme.secondary,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                     size: 22),
                                 const SizedBox(width: 6),
                                 Text(
@@ -213,7 +227,8 @@ class HomePage extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).colorScheme.secondary,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 ),
                               ],
@@ -244,7 +259,8 @@ class HomePage extends StatelessWidget {
                             Row(
                               children: [
                                 Icon(Icons.school,
-                                    color: Theme.of(context).colorScheme.secondary,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                     size: 22),
                                 const SizedBox(width: 6),
                                 Text(
@@ -252,7 +268,8 @@ class HomePage extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).colorScheme.secondary,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 ),
                               ],
@@ -277,7 +294,8 @@ class HomePage extends StatelessWidget {
                             Row(
                               children: [
                                 Icon(Icons.people,
-                                    color: Theme.of(context).colorScheme.secondary,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                     size: 22),
                                 SizedBox(width: 6),
                                 Text(
@@ -285,7 +303,8 @@ class HomePage extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).colorScheme.secondary,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 ),
                               ],

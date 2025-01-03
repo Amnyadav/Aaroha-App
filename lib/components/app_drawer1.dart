@@ -1,3 +1,5 @@
+import 'package:aaroha/pages/LoginPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/theme.dart';
@@ -144,13 +146,38 @@ class AppDrawer extends StatelessWidget {
                     color: Color(0xFF812204),
                     fontSize: 25,
                     fontWeight: FontWeight.bold)),
-            onTap: () {
-              Navigator.of(context).pushNamed('/login');
+            onTap: () async {
+              // Navigator.pushReplacement(
+              //     context, MaterialPageRoute(builder: (context) => const LoginPage()));
+              // Navigator.of(context).pushNamed('/login');
+              await AuthService.logout(context);
             },
           ),
            const Spacer(flex: 1),
         ],
       ),
     );
+  }
+}
+
+class AuthService {
+  static Future<void> logout(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+            (route) => false,
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Error logging out: $e",
+            style: const TextStyle(fontSize: 16.0),
+          ),
+        ),
+      );
+    }
   }
 }
