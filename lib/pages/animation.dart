@@ -1,6 +1,5 @@
 import 'package:aaroha/pages/LoginPage.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
 
 class AnimationScreen extends StatefulWidget {
   const AnimationScreen({Key? key}) : super(key: key);
@@ -13,36 +12,39 @@ class _AnimationScreenState extends State<AnimationScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
-  late Animation<Offset> _slideAnimation;
+  late Animation<double> _scaleAnimation;
 
   @override
   void initState() {
     super.initState();
 
+    // Faster animations with a duration of 1.5 seconds
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 1, milliseconds: 500),
     );
 
-    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
-
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 1),
-      end: Offset.zero,
-    ).animate(
+    // Animation for scaling the logo
+    _scaleAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+    );
+
+    // Animation for fading in the text
+    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.5, 1.0, curve: Curves.easeIn), // Starts after scaling
+      ),
     );
 
     _controller.forward();
 
-    Future.delayed(const Duration(seconds: 5), () {
+    // Navigate to the next screen after 3 seconds
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
       );
-      // Navigator.pushReplacementNamed(context, '/pages/LoginPage');
     });
   }
 
@@ -61,20 +63,19 @@ class _AnimationScreenState extends State<AnimationScreen>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SlideTransition(
-                position: _slideAnimation,
-                child: FadeTransition(
-                  opacity: _fadeAnimation,
-                  child: Image.asset('lib/images/logo.png'),
-                ),
+              // Logo with scaling animation
+              ScaleTransition(
+                scale: _scaleAnimation,
+                child: Image.asset('lib/images/logo.png', height: 150), // Adjust height if needed
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
+              // First text line with fading animation
               FadeTransition(
                 opacity: _fadeAnimation,
                 child: const Text(
                   'आरोह तमसो ज्योतिः',
                   style: TextStyle(
-                    color: const Color(0xFFD7EEF3),
+                    color: Color(0xFFD7EEF3),
                     fontSize: 20,
                     shadows: [
                       Shadow(
@@ -87,14 +88,16 @@ class _AnimationScreenState extends State<AnimationScreen>
                 ),
               ),
               const SizedBox(height: 10),
+              // Second text line with fading animation
               FadeTransition(
                 opacity: _fadeAnimation,
                 child: Text(
                   'AAROHA',
                   style: TextStyle(
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold),
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

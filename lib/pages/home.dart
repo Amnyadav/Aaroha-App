@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-        bottomNavigationBar: const CustomBottomBar(),
+      bottomNavigationBar: const CustomBottomBar(),
       body: const Column(
         children: [
           Expanded(
@@ -28,8 +29,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-    final scaffoldKey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
       drawer: const AppDrawer(),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -38,35 +38,66 @@ class HomePage extends StatelessWidget {
           children: [
             Stack(
               children: [
-               Container(
-  height: screenHeight * 0.3,
-  width: double.infinity,
-  child: Padding(
-    padding: const EdgeInsets.only(bottom: 1), // Add padding below the image
-    child: ClipRRect(
-      borderRadius: const BorderRadius.only(
-        bottomLeft: Radius.circular(40),
-        bottomRight: Radius.circular(40),
-      ),
-      child: Transform.translate(
-        offset: const Offset(0, -5), // Move the image 10 pixels up
-        child: Image.asset(
-          'lib/images/home.jpg',
-          fit: BoxFit.cover,
-          color: Colors.black.withOpacity(.3),
-          colorBlendMode: BlendMode.darken,
-        ),
-      ),
-    ),
-  ),
-),
-
-
-                //App Bar
-                CustomAppBar(
-                  title: "AAROHA",
-                  titleTheme: Theme.of(context).textTheme.headlineLarge,
-                  iconColor: Theme.of(context).colorScheme.tertiary,
+             
+                Container(
+                  height: screenHeight * 0.3,
+                  width: double.infinity,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40),
+                    ),
+                    child: Image.asset(
+                      'lib/images/home.jpg',
+                      fit: BoxFit.cover,
+                      color: Colors.black.withOpacity(.3),
+                      colorBlendMode: BlendMode.darken,
+                    ),
+                  ),
+                ),
+                // App Bar
+                Positioned(
+                  top: 40,
+                  left: 16,
+                  right: 16,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      
+                      Builder(
+                        builder: (context) => IconButton(
+                          icon: Icon(
+                            Icons.menu,
+                            color: Colors.white,
+                            size: 45, 
+                          ),
+                          onPressed: () => Scaffold.of(context).openDrawer(),
+                        ),
+                      ),
+                 
+                          Container(
+                          height: 100, 
+                          width: 100,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.transparent, 
+                            boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Colors.black26,
+                              offset: Offset(2, 2),
+                            ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                            'lib/images/logo.png', 
+                            fit: BoxFit.contain,
+                            ),
+                          ),
+                          ),
+                    ],
+                  ),
                 ),
                 const Positioned(
                   bottom: 25,
