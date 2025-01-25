@@ -1,4 +1,4 @@
-import 'package:aaroha/pages/LoginPage.dart';
+
 import 'package:flutter/material.dart';
 
 class AnimationScreen extends StatefulWidget {
@@ -39,11 +39,12 @@ class _AnimationScreenState extends State<AnimationScreen>
 
     _controller.forward();
 
-    // Navigate to the next screen after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
+
+    Future.delayed(const Duration(seconds: 2), () {
+
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'title')),
       );
     });
   }

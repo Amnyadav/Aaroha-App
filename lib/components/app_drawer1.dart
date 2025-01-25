@@ -1,6 +1,10 @@
-import 'package:aaroha/pages/LoginPage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:aaroha/pages/chapters.dart';
+import 'package:aaroha/pages/home.dart';
+import 'package:aaroha/pages/teachingDetails.dart';
+import 'package:aaroha/pages/team.dart';
+
 import 'package:flutter/material.dart';
+
 
 import '../theme/theme.dart';
 
@@ -57,10 +61,9 @@ class AppDrawer extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: lightMode.colorScheme.secondary),
             ),
-            onTap: () {
-              // Navigator.pop(context);
-              Navigator.of(context).pushNamed('/dashboard');
-            },
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> const MyHomePage(title: 'title')));
+              },
           ),
 
           // Chapters
@@ -71,14 +74,14 @@ class AppDrawer extends StatelessWidget {
               color: lightMode.colorScheme.primary,
             ),
             title: Text(
-              'Chapters',
+              'Teaching details',
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: lightMode.colorScheme.secondary),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('/chapters');
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> TeachingDetails()));
             },
           ),
 
@@ -97,7 +100,7 @@ class AppDrawer extends StatelessWidget {
                   color: lightMode.colorScheme.secondary),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('/team');
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> TeamPage()));
             },
           ),
 
@@ -109,34 +112,36 @@ class AppDrawer extends StatelessWidget {
               color: lightMode.colorScheme.primary,
             ),
             title: Text(
-              'Settings',
+              'Chapters',
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: lightMode.colorScheme.secondary),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('/settings');
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> ChaptersPage()));
             },
           ),
 
           Spacer(flex: 5), // Pushes the logout button to the bottom
 
           // Logout feature
-          ListTile(
-            leading: Icon(Icons.logout, color: Colors.black, size: 30),
-            title: Text('Log Out',
-                style: TextStyle(
-                    color: Color(0xFF812204),
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold)),
-            onTap: () async {
-              // Navigator.pushReplacement(
-              //     context, MaterialPageRoute(builder: (context) => const LoginPage()));
-              // Navigator.of(context).pushNamed('/login');
-              await AuthService.logout(context);
-            },
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.logout, color: Colors.black, size: 30),
+          //   title: Text('Log Out',
+          //       style: TextStyle(
+          //           color: Color(0xFF812204),
+          //           fontSize: 25,
+          //           fontWeight: FontWeight.bold)),
+          //   onTap: () async {
+          //     Navigator.pushReplacement(
+          //         context, MaterialPageRoute(builder: (context) => const LoginPage()));
+          //     Navigator.of(context).pushNamed('/login');
+          //     await AuthService.logout(context);
+          //
+          //     print('User signed out');
+          //   },
+          // ),
           Spacer(flex: 1),
         ],
       ),
@@ -144,24 +149,34 @@ class AppDrawer extends StatelessWidget {
   }
 }
 
-class AuthService {
-  static Future<void> logout(BuildContext context) async {
-    try {
-      await FirebaseAuth.instance.signOut();
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
-            (route) => false,
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "Error logging out: $e",
-            style: const TextStyle(fontSize: 16.0),
-          ),
-        ),
-      );
-    }
-  }
-}
+
+
+// class AuthService {
+//
+//   final FirebaseAuth _auth = FirebaseAuth.instance;
+//   final GoogleSignIn _googleSignIn = GoogleSignIn();
+//
+//   static Future<void> logout(BuildContext context) async {
+//     try {
+//       User? user = FirebaseAuth.instance.currentUser;
+//       await user?.delete();
+//       await FirebaseAuth.instance.signOut();
+//       await GoogleSignIn().signOut();
+//
+//       Navigator.pushAndRemoveUntil(
+//         context,
+//         MaterialPageRoute(builder: (context) => const LoginPage()),
+//             (route) => false,
+//       );
+//     } catch (e) {
+//       ScaffoldMessenger.of(context).showSnackBar(
+//         SnackBar(
+//           content: Text(
+//             "Error logging out: $e",
+//             style: const TextStyle(fontSize: 16.0),
+//           ),
+//         ),
+//       );
+//     }
+//   }
+// }

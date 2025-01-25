@@ -1,26 +1,51 @@
 {
   "project_info": {
-    "project_number": "55283264807",
-    "project_id": "aaroha-application",
-    "storage_bucket": "aaroha-application.firebasestorage.app"
+    "project_number": "1066233643421",
+    "project_id": "aaroha-app-25fd3",
+    "storage_bucket": "aaroha-app-25fd3.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:55283264807:android:ddf7cf394f77bdae5f0d02",
+        "mobilesdk_app_id": "1:1066233643421:android:3cd4e2c8bfc7aa92c1af74",
         "android_client_info": {
           "package_name": "com.example.aaroha"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1066233643421-rj32sas8p65gi4bi6ehekjta9m13ttuv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aaroha",
+            "certificate_hash": "98e3fdbe7899e1208c915e28c816422dea21a170"
+          }
+        },
+        {
+          "client_id": "1066233643421-rnhkd1pk7efklsj1t0nnhg799snqbgsa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCeiWgJpobn6Gmk1tRzir-MageHsKlO6oc"
+          "current_key": "AIzaSyBla2e6nNoDvy6nv09dKEjl9pWKlhKuI_M"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066233643421-rnhkd1pk7efklsj1t0nnhg799snqbgsa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1066233643421-kdb1nu3k2gq4gs4r1rfvb9mobl5kmkvr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aaroha"
+              }
+            }
+          ]
         }
       }
     }

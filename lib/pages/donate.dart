@@ -9,6 +9,7 @@ class DonatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const AppDrawer(),
       appBar: PreferredSize(preferredSize: const Size.fromHeight(90),
         child: CustomAppBar(
           title: "Donate",
