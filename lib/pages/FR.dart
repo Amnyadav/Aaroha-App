@@ -21,7 +21,7 @@ class FRPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fundraising Event'),
+        title: const Text('Fundraising Event', style: TextStyle(fontSize: 25),),
         backgroundColor: Colors.blueAccent,
         actions: [
           IconButton(
