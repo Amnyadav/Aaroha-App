@@ -28,7 +28,7 @@ class ChaptersPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 centerTitle: true,
                 title: Text(
-                  "Team",
+                  "Our Chapters",
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 leading: Builder(
